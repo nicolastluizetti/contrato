@@ -1,22 +1,27 @@
 package com.contratos.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.contratos.dto.clientesDTO;
-import com.contratos.model.clientes;
+import com.contratos.dto.ClienteDTO;
+import com.contratos.model.Cliente;
 
 
 
 @Mapper(componentModel = "spring")
 public interface ClienteMapper {
 
-    // Entity → DTO
+  
     @Mapping(source = "cliente.id", target = "clienteId")
-    clientesDTO toDTO(clientes clientes);
+    ClienteDTO toDTO(Cliente clientes);
 
-    // DTO → Entity
+
     @Mapping(source = "clienteId", target = "cliente.id")
-    clientes toEntity(clientesDTO clientesdto);
+    Cliente toEntity(ClienteDTO clientesdto);
+    
+    @Mapping(source = "clienteId", target = "cliente.id")
+    List<ClienteDTO> toDTO(List<Cliente> clientes);
 }
 

@@ -11,15 +11,6 @@ import org.springframework.web.client.HttpServerErrorException.BadGateway;
 @ControllerAdvice
 public class ExceptionHandler {
 
-   
-    @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ResponseBody
-    public Erro internalServerError(Exception e) {
-        return new Erro("Erro interno do servidor", e.getMessage());
-    }
-
-    
     @org.springframework.web.bind.annotation.ExceptionHandler(BadGateway.class)
     @ResponseStatus(HttpStatus.BAD_GATEWAY)
     @ResponseBody
@@ -41,6 +32,13 @@ public class ExceptionHandler {
     @ResponseBody
     public Erro proibido(Forbidden e) {
         return new Erro("Proibido", e.getMessage());
+    }
+    
+    @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
+    public Erro internalServerError(Exception e) {
+        return new Erro("Erro interno do servidor", e.getMessage());
     }
 }
 

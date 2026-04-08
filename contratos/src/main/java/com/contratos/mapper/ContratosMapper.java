@@ -1,10 +1,12 @@
 package com.contratos.mapper;
 
+import java.util.List;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import com.contratos.dto.contratosDTO;
-import com.contratos.model.contratos;
+import com.contratos.dto.ContratosDTO;
+import com.contratos.model.Contrato;
 
 
 
@@ -13,10 +15,13 @@ public interface ContratosMapper {
 
     // Entity → DTO
     @Mapping(source = "cliente.id", target = "clienteId")
-    contratosDTO toDTO(contratos contrato);
+    ContratosDTO toDTO(Contrato contrato);
 
     // DTO → Entity
     @Mapping(source = "clienteId", target = "cliente.id")
-    contratosDTO toEntity(contratos dto);
+    Contrato toEntity(ContratosDTO dto);
+    
+    @Mapping(source = "clienteId", target = "cliente.id")
+    List<ContratosDTO> toDTOlist(List<Contrato> contrato);
 }
 
